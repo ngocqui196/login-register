@@ -1,0 +1,93 @@
+
+
+
+
+<form (ngSubmit)="OnSubmit()" [formGroup]="loginForm">
+  <div>
+    <div>id</div>
+    <input type="text" formControlName="id">
+  </div>
+
+  <div>
+  <div>Email</div>
+    <input type="text" formControlName="email">
+    <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.hasError('required')" style="color: red">
+      Email khong được để trống
+    </div>
+
+    <div *ngIf="loginForm.controls.email.hasError('email')" style="color: red">
+      Email khong đúng định dạng
+    </div>
+  </div>
+
+  <div>
+  <div>Pass</div>
+    <input type="text" formControlName="password">
+    <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.hasError('required')" style="color: red">
+      Email khong được để trống
+    </div>
+  </div>
+
+  <div>
+  <div>
+    Confirm Password
+  </div>
+    <input type="text" formControlName="repassword">
+    <div *ngIf="loginForm.controls.repassword.touched && loginForm.controls.repassword.hasError('required')" style="color: red">
+      Email khong được để trống
+    </div>
+
+    <div *ngIf="loginForm.controls.repassword.touched && loginForm.hasError('notSame')" style="color: red">
+      Password không trùng khớp
+    </div>
+
+  </div>
+
+  <div>
+  <div>Country</div>
+    <input type="text" formControlName="country">
+    <div *ngIf="loginForm.controls.country.touched && loginForm.controls.country.hasError('required')" style="color: red">
+      Email khong được để trống
+    </div>
+  </div>
+
+  <div>
+  <div>Age</div>
+    <input type="text" formControlName="age">
+    <div *ngIf="loginForm.controls.age.touched && loginForm.controls.age.hasError('required')" style="color: red">
+      Email khong được để trống
+    </div>
+
+    <div *ngIf="loginForm.controls.age.touched && loginForm.controls.age.hasError('min')" style="color: red">
+      Tuổi phải lopwsn hiown 18
+    </div>
+  </div>
+
+  <div>
+  <div>Gender</div>
+    <label>Male</label>
+    <input type="radio" formControlName="gender" value="male">
+    <label>Female</label>
+    <input type="radio" formControlName="gender" value="female">
+  </div>
+
+  <div>
+  <div>Phone</div>
+    <input type="text" formControlName="phone">
+    <div *ngIf="loginForm.controls.phone.touched && loginForm.controls.phone.hasError('required')" style="color: red">
+      Email khong được để trống
+    </div>
+
+    <div *ngIf="loginForm.controls.phone.touched && loginForm.controls.phone.hasError('pattern')" style="color: red">
+      Phone không đúng định dạng
+    </div>
+  </div>
+
+  <button>Submit</button>
+
+</form>
+
+
+<div>
+  {{loginForm.value | json}}
+</div>
